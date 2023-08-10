@@ -1,8 +1,7 @@
 # Seastar starter project
 
 This project contains a small [Seastar](https://github.com/scylladb/seastar)
-program and minimal cmake scaffolding. The example contains both coroutines
-and continuation passing style uses of Seastar.
+program with [Wasmtime](https://github.com/bytecodealliance/wasmtime) and minimal cmake scaffolding.
 
 # Getting started
 
@@ -21,36 +20,30 @@ CXX=clang++ CC=clang cmake -Bbuild -S. -GNinja
 ninja -C build
 ```
 
-Run the example program `./main --msg sup`:
+Run the example program `./main`:
 
 ```
-build/main --msg sup
+build/main
 ```
 
 Similar output to the following should be produced:
 
 ```
-INFO  2022-10-24 20:18:56,540 [shard 0] speak-log - Processed speak request
-INFO  2022-10-24 20:18:57,540 [shard 1] speak-log - Processed speak request
-INFO  2022-10-24 20:18:58,540 [shard 2] speak-log - Processed speak request
-INFO  2022-10-24 20:18:59,540 [shard 3] speak-log - Processed speak request
-INFO  2022-10-24 20:19:00,540 [shard 4] speak-log - Processed speak request
-INFO  2022-10-24 20:19:01,540 [shard 5] speak-log - Processed speak request
-msg: "sup" from core 0
-msg: "sup" from core 1
-msg: "sup" from core 2
-msg: "sup" from core 3
-msg: "sup" from core 4
-msg: "sup" from core 5
+INFO  2023-08-10 12:48:36,307 seastar - Reactor backend: linux-aio
+INFO  2023-08-10 12:48:36,338 [shard 0] seastar - Created fair group io-queue-0 for 2 queues, capacity rate 2147483:2147483, limit 12582912, rate 16777216 (factor 1), threshold 2000, per tick grab 6291456
+INFO  2023-08-10 12:48:36,338 [shard 0] seastar - IO queue uses 0.75ms latency goal for device 0
+INFO  2023-08-10 12:48:36,338 [shard 0] seastar - Created io group dev(0), length limit 4194304:4194304, rate 2147483647:2147483647
+INFO  2023-08-10 12:48:36,338 [shard 0] seastar - Created io queue dev(0) capacities: 512:2000:2000 1024:3000:3000 2048:5000:5000 4096:9000:9000 8192:17000:17000 16384:33000:33000 32768:65000:65000 65536:129000:129000 131072:257000:257000
+Initializing...
+Compiling module...
+Instantiating module...
+Extracting export...
+Calling export...
+All finished!
+Initializing...
+Compiling module...
+Instantiating module...
+Extracting export...
+Calling export...
+zsh: illegal hardware instruction (core dumped)  ./build/main
 ```
-
-# Resources
-
-* [The Seastar tutorial](https://github.com/scylladb/seastar/blob/master/doc/tutorial.md)
-* [ScyllaDB](https://github.com/scylladb/scylla) is a large project that uses Seastar.
-* [CMake tutorial](https://cmake.org/cmake-tutorial/)
-
-# Testing
-
-This project uses a GitHub action to run the same set of instructions as above. Please
-see [.github/workflows/build.yml](.github/workflows/build.yml) for reference.

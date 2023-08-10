@@ -22,7 +22,7 @@ IncludeCategories:
   - Regex:    '^<seastar/'
     Priority: 2
   # Other libraries
-  - Regex:    '^<.+/'
+  - Regex:    '^<wasm'
     Priority: 4
   # Std header files (with angles)
   - Regex:    '^<'

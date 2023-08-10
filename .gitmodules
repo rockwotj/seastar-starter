@@ -2,3 +2,6 @@
     path = seastar
     url = https://github.com/scylladb/seastar.git
     ignore = dirty
+[submodule "wasmtime"]
+	path = wasmtime
+	url = https://github.com/bytecodealliance/wasmtime
